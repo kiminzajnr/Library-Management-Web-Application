@@ -4,3 +4,4 @@ sqlalchemy
 flask-sqlalchemy
 gunicorn
 flask-wtf
+wtforms
