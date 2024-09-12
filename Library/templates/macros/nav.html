@@ -1,0 +1,33 @@
+{% macro header(email, theme) %}
+<header class="header">
+    <div class="nav-container">
+        <a href="{{ url_for('pages.index') }}" class="header__logo">
+            <span class="logo__name">Library</span>
+        </a>
+        <nav class="nav">
+
+            <a
+                href="#"
+                class="nav__link"
+            >
+                <span class="nav__item">Books</span>
+            </a>
+
+            <a
+                href="#"
+                class="nav__link"
+            >
+                <span class="nav__item">Members</span>
+            </a>
+
+            <a
+                href="#"
+                class="nav__link"
+            >
+                <span class="nav__item">Issue</span>
+            </a>    
+            
+        </nav>
+    </div>
+</header>
+{% endmacro %}
