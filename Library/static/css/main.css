@@ -7,6 +7,15 @@
     --background-color: #fff;
 }
 
+.button {
+    --background-color: #e2e8f0;
+    --background-color-hover: #bdd1eb;
+}
+
+.form__field {
+    --background-color: #e8e5e5;
+}
+
 .form__field,
 .nav__link {
     --border: 3px solid #f56565;
