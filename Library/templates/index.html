@@ -1,9 +1,49 @@
 {% extends "layout.html" %}
 
 {% block head_content %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/books.css') }}">
 {% endblock %}
 
 {% block main_content %}
-    <h1>Books</h1>
+    {% if books %}
+        <table class="table">
+            <colgroup>
+                <col style="width: 40%;">
+                <col style="width: 25%;">
+                <col style="width: 15%;">
+                <col style="width: 10%;">
+                <col style="width: 10%;">
+                <col style="width: 10%;">
+            </colgroup>
+            <thead>
+                <th class="table__cell table__cell--header">Title</th>
+                <th class="table__cell table__cell--header">Quantity</th>
+                <th class="table__cell table__cell--header">fee</th>
+                <th class="table__cell table__cell--header"></th>
+                <th class="table__cell table__cell--header"></th>
+                <th class="table__cell table__cell--header"></th>
+            </thead>
+            <tbody>
+                {% for book in books %}
+                    <tr>
+                        <td class="table__cell">
+                            <p class="table__bookTitle">{{ book.title }}</p>
+                            <p class="table__bookAuthor">{{ book.author }}</p>
+                        </td>
+                        <td class="table__cell">{{ book.quantity }}</td>
+                        <td class="table__cell">{{ book.fee }} KSh</td>
+                        <td class="table__cell"><a href="#" class="table__link">View</a></td>
+                        <td class="table__cell"><a href="#" class="table__link">Issue</a></td>
+                        <td class="table__cell"><a href="#" class="table__link">Delete</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p class="table__empty">You haven't added any books yet. <a href="{{ url_for('pages.add_book') }}" class="link">Add one!</a></p>
+    {% endif %}
 
+    <a href="{{ url_for('pages.add_book') }}" class="button button--add">
+        <span>+</span>
+    </a>
 {% endblock %}
