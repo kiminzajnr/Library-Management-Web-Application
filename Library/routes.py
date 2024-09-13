@@ -45,3 +45,11 @@ def add_book():
     return render_template(
         "new_book.html", title="Library Management App - Add Book", form=form
     )
+
+
+@pages.route("/delete_book/<int:_id>", methods=["GET", "DELETE"])
+def delete_book(_id):
+    book = BookModel.query.filter_by(id=_id).first()
+    db.session.delete(book)
+    db.session.commit()
+    return redirect(url_for(".index"))
