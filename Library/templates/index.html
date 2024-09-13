@@ -32,9 +32,9 @@
                         </td>
                         <td class="table__cell">{{ book.quantity }}</td>
                         <td class="table__cell">{{ book.fee }} KSh</td>
-                        <td class="table__cell"><a href="#" class="table__link">View</a></td>
+                        <td class="table__cell"><a href="#" class="table__link">Update</a></td>
                         <td class="table__cell"><a href="#" class="table__link">Issue</a></td>
-                        <td class="table__cell"><a href="#" class="table__link">Delete</a></td>
+                        <td class="table__cell"><a href="{{ url_for('pages.delete_book', _id=book.id) }}" class="table__link">Delete</a></td>
                     </tr>
                 {% endfor %}
             </tbody>
