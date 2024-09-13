@@ -11,9 +11,12 @@ pages = Blueprint(
 
 @pages.route("/")
 def index():
+    books = BookModel.query.all()
+
     return render_template(
         "index.html",
         title="Library Management Web Application",
+        books=books
     )
 
 
