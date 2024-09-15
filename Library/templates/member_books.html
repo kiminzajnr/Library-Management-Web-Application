@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block head_content %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/transactions.css') }}">
+{% endblock %}
+
+{% block main_content %}
+    {% if member_books %}
+        <p class="view__member">You are viewing books borrowed by {{ member.name }}</p>
+        <table class="table">
+            <colgroup>
+                <col style="width: 40%;">
+                <col style="width: 20%;">
+                <col style="width: 20%;">
+                <col style="width: 20%;">
+            </colgroup>
+            <thead>
+                <th class="table__cell table__cell--header">Book</th>
+                <th class="table__cell table__cell--header">Issue Date</th>
+                <th class="table__cell table__cell--header">Return Date</th>
+                <th class="table__cell table__cell--header"></th>
+                <th class="table__cell table__cell--header"></th>
+            </thead>
+            <tbody>
+                {% for transaction in member_books %}
+                    <tr>
+                        <td class="table__cell">
+                            <p class="table__bookTitle">{{ transaction.book.title }}</p>
+                            <p class="table__bookAuthor">{{ transaction.book.author }}</p>
+                        </td>
+                        <td class="table__cell">{{ transaction.borrow_date.strftime("%d %b %Y") }}</td>
+                        <td class="table__cell">
+                            {% if transaction.return_date %}
+                                {{ transaction.return_date.strftime("%d %b %Y") }}
+                            {% else %}
+                                Not Returned
+                            {% endif %}
+                        </td>
+                        <td class="table__cell">
+                            {% if transaction.return_date %}
+                                Returned
+                            {% else %}
+                                <a href="{{ url_for('pages.view_member_books', _id=member.id) }}" class="table__link">Return</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p class="table__empty">You haven't issued any books to this member yet. <a href="{{ url_for('pages.index') }}" class="link">Issue one!</a></p>
+    {% endif %}
+{% endblock %}
