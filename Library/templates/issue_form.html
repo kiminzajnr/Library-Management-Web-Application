@@ -10,6 +10,7 @@
     <form name="issue_book" method="post" novalidate class="form">
         <div class="form__container">
             {{ form.hidden_tag() }}
+            {{ render_text_field(form.title) }}
             {{ render_text_field(form.member) }}
             {{ render_text_field(form.borrow_date) }}
             <div>

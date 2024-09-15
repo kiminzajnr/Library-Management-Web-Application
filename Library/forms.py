@@ -23,6 +23,7 @@ class MemberForm(FlaskForm):
 
 
 class IssueForm(FlaskForm):
+    title = StringField("Book Title", validators=[InputRequired()])
     member = SelectField("Select member", validators=[InputRequired()], coerce=int)
     borrow_date = DateTimeField("Borrow Date", validators=[InputRequired()], default=datetime.datetime.today())
 

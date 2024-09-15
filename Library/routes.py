@@ -87,11 +87,12 @@ def add_book():
 @pages.route("/issue_book/<int:_id>", methods=["GET", "POST"])
 def issue_book(_id):
     book = BookModel.query.filter_by(id=_id).first()
-    form = IssueForm()
+    form = IssueForm(title=book.title)
 
     form.member.choices = [(member.id, member.name) for member in MemberModel.query.all()]
 
     if form.validate_on_submit():
+        title = form.member.data
         member_id = form.member.data
         borrow_date = form.borrow_date.data
 
