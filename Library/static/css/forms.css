@@ -60,6 +60,7 @@
   }
 
   .button--form:hover {
+    cursor: pointer;
     background: var(--background-color-hover);
   }
 
