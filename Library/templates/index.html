@@ -32,7 +32,17 @@
                         </td>
                         <td class="table__cell">{{ book.quantity }}</td>
                         <td class="table__cell">{{ book.fee }} KSh</td>
-                        <td class="table__cell"><a href="{{ url_for('pages.issue_book', _id=book.id) }}" class="table__link">Issue</a></td>
+
+
+                        <td class="table__cell">
+                            {% if book.quantity > 0 %}
+                                <a href="{{ url_for('pages.issue_book', _id=book.id) }}" class="table__link">Issue</a>
+                            {% else %}
+                                <a href="{{ url_for('pages.edit_book', _id=book.id) }}" class="table__link">Add Copies</a>
+                            {% endif %}
+                        </td>
+
+
                         <td class="table__cell">
                             <p class="table__bookUpdate"><a href="{{ url_for('pages.edit_book', _id=book.id) }}" class="table__link">Edit</a></p>
                             <p class="table__bookDelete"><a href="{{ url_for('pages.delete_book', _id=book.id) }}" class="table__link">Delete</a></p>

@@ -92,7 +92,6 @@ def issue_book(_id):
     form.member.choices = [(member.id, member.name) for member in MemberModel.query.all()]
 
     if form.validate_on_submit():
-        title = form.member.data
         member_id = form.member.data
         borrow_date = form.borrow_date.data
 
