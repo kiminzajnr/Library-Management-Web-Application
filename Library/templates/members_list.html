@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block head_content %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/members.css') }}">
+{% endblock %}
+
+{% block main_content %}
+    {% if members %}
+        <table class="table">
+            <colgroup>
+                <col style="width: 40%;">
+                <col style="width: 25%;">
+                <col style="width: 15%;">
+                <col style="width: 10%;">
+                <col style="width: 10%;">
+                <col style="width: 10%;">
+            </colgroup>
+            <thead>
+                <th class="table__cell table__cell--header">Name</th>
+                <th class="table__cell table__cell--header">Email</th>
+                <th class="table__cell table__cell--header">debt</th>
+                <th class="table__cell table__cell--header"></th>
+                <th class="table__cell table__cell--header"></th>
+                <th class="table__cell table__cell--header"></th>
+            </thead>
+            <tbody>
+                {% for member in members %}
+                    <tr>
+                        <td class="table__cell">{{ member.name }}</td>
+                        <td class="table__cell">{{ member.email }}</td>
+                        <td class="table__cell">{{ member.debt }} KSh</td>
+                        <td class="table__cell"><a href="{{ url_for('pages.view_member_books', _id=member.id) }}" class="table__link">View</a></td>
+                        <td class="table__cell">
+                            <p class="table__memberUpdate"><a href="{{ url_for('pages.edit_member', _id=member.id) }}" class="table__link">Edit</a></p>
+                            <p class="table__memberDelete"><a href="{{ url_for('pages.delete_member', _id=member.id) }}" class="table__link">Delete</a></p>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p class="table__empty">You haven't added any Members yet. <a href="{{ url_for('pages.add_member') }}" class="link">Add one!</a></p>
+    {% endif %}
+
+    <a href="{{ url_for('pages.add_member') }}" class="button button--add">
+        <span>+</span>
+    </a>
+{% endblock %}
