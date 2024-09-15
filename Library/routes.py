@@ -185,14 +185,26 @@ def edit_member(_id):
 @pages.route("/delete_book/<int:_id>", methods=["GET", "DELETE"])
 def delete_book(_id):
     book = BookModel.query.filter_by(id=_id).first()
-    db.session.delete(book)
-    db.session.commit()
+    if book:
+        transactions = TransactionModel.query.filter_by(book_id=_id).all()
+
+        for transaction in transactions:
+            db.session.delete(transaction)
+
+        db.session.delete(book)
+        db.session.commit()
     return redirect(url_for(".index"))
 
 
 @pages.route("/delete_member/<int:_id>", methods=["GET", "DELETE"])
 def delete_member(_id):
     member = MemberModel.query.filter_by(id=_id).first()
-    db.session.delete(member)
-    db.session.commit()
+    if member:
+        transactions = TransactionModel.query.filter_by(member_id=_id).all()
+
+        for transaction in transactions:
+            db.session.delete(transaction)
+            
+        db.session.delete(member)
+        db.session.commit()
     return redirect(url_for(".members"))
