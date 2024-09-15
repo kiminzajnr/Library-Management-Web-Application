@@ -11,6 +11,6 @@ class TransactionModel(db.Model):
     borrow_date = db.Column(db.DateTime, default=datetime.datetime.today())
     return_date = db.Column(db.DateTime, nullable=True)
 
-    book = db.relationship("BookModel", backref="transactions")
-    member = db.relationship("MemberModel", backref="transactions")
+    book = db.relationship("BookModel", backref="transactions", cascade="all, delete")
+    member = db.relationship("MemberModel", backref="transactions", cascade="all, delete")
 

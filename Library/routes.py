@@ -1,3 +1,4 @@
+import datetime
 from flask import Blueprint, render_template, url_for, redirect
 from Library.forms import BooksForm, MemberForm, IssueForm
 from Library.db import db
@@ -110,6 +111,21 @@ def issue_book(_id):
         return redirect(url_for(".view_member_books", _id=member_id))
     return render_template("issue_form.html", form=form, book=book)
 
+
+@pages.route("/issue_return/<int:book_id>/<int:member_id>", methods=["GET", "POST"])
+def issue_return_book(book_id, member_id):
+    book = BookModel.query.filter_by(id=book_id).first()
+    member = MemberModel.query.filter_by(id=member_id).first()
+    transaction = TransactionModel.query.filter_by(book_id=book_id, member_id=member_id).first()
+
+    
+    transaction.return_date = datetime.datetime.today()
+
+    member.debt = member.debt + book.fee
+    book.quantity = book.quantity + 1
+    db.session.commit()
+
+    return redirect(url_for(".view_member_books", _id=member_id))
 
 
 @pages.route("/add_member", methods=["GET", "POST"])

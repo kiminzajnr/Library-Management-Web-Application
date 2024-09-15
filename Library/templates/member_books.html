@@ -40,7 +40,7 @@
                             {% if transaction.return_date %}
                                 Returned
                             {% else %}
-                                <a href="{{ url_for('pages.view_member_books', _id=member.id) }}" class="table__link">Return</a>
+                                <a href="{{ url_for('pages.issue_return_book', book_id=transaction.book.id, member_id=member.id) }}" class="table__link">Return</a>
                             {% endif %}
                         </td>
                     </tr>
