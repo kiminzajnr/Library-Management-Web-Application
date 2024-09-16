@@ -40,6 +40,9 @@ Allow a librarian to track books and their quantity, books issued to members, bo
 #### Ensure Debt does not exceed 500 KSh
 ![debt_exceeded](/screenshots/debts_exceeded.png)
 
+### Remove from stock when no copies left
+![](/screenshots/remove_stock.png)
+
 #### Search Book by Author or title
 ![search_book](/screenshots/search_book.png)
 
