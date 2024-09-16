@@ -5,6 +5,19 @@
 {% endblock %}
 
 {% block main_content %}
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <div>
+      {% for message in messages %}
+        <div class="alert--debt">
+          {{ message }}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+
     {% if member_books %}
         <p class="view__member">You are viewing books issued to {{ member.name }}</p>
         <table class="table">
