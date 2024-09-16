@@ -31,7 +31,7 @@ Allow a librarian to track books and their quantity, books issued to members, bo
 #### Add Member  
 ![add_member](/screenshots/add_member.png)
 
-#### Issued books  
+#### Issued books/Isue return  
 ![issued_books](/screenshots/issued_books.png)
 
 #### Issue a Book
