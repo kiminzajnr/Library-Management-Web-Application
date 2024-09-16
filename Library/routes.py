@@ -1,5 +1,5 @@
 import datetime
-from flask import Blueprint, render_template, url_for, redirect, request
+from flask import Blueprint, render_template, url_for, redirect, request, flash
 from Library.forms import BooksForm, MemberForm, IssueForm
 from Library.db import db
 from Library.models import BookModel, MemberModel, TransactionModel
@@ -121,6 +121,10 @@ def issue_return_book(book_id, member_id):
     
     transaction.return_date = datetime.datetime.today()
 
+    if member.debt + book.fee > 500:
+        flash("Member debt cannot exceed 500 KSh.")
+        return redirect(url_for(".view_member_books", _id=member_id))
+    
     member.debt = member.debt + book.fee
     book.quantity = book.quantity + 1
     db.session.commit()
