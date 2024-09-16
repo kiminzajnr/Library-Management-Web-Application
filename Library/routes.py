@@ -1,5 +1,5 @@
 import datetime
-from flask import Blueprint, render_template, url_for, redirect
+from flask import Blueprint, render_template, url_for, redirect, request
 from Library.forms import BooksForm, MemberForm, IssueForm
 from Library.db import db
 from Library.models import BookModel, MemberModel, TransactionModel
@@ -204,7 +204,18 @@ def delete_member(_id):
 
         for transaction in transactions:
             db.session.delete(transaction)
-            
+
         db.session.delete(member)
         db.session.commit()
     return redirect(url_for(".members"))
+
+
+@pages.route("/search", methods=["GET"])
+def search():
+    query = request.args.get('query')
+
+    book_results = BookModel.query.filter(
+        (BookModel.title.ilike(f"%{query}%")) | (BookModel.author.ilike(f"%{query}%"))
+    ).all()
+
+    return render_template("index.html", books=book_results, query=query)
