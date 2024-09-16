@@ -1,6 +1,6 @@
 # Library-Management-Web-Application
 
-The Library Management Web Application is designed to assist librarians track book, member, and transactions (borrowing and returning books). It also handle managing book quantities and member debts to ensure smooth operation of library activities.
+Allow a librarian to track books and their quantity, books issued to members, book fees etc.
 
 ## Features
 
