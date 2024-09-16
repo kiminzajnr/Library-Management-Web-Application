@@ -82,3 +82,9 @@
   .table__bookAuthor {
     font-size: 0.85em;
   }
+
+  .alert--debt {
+    text-align: center;
+    margin-bottom: 2em;
+    color: red;
+  }
