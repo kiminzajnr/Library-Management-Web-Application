@@ -10,8 +10,6 @@ Allow a librarian to track books and their quantity, books issued to members, bo
 - Debt Tracking: Prevents members from borrowing books if their debt exceeds/will exceed 500 KSh.
 - Real-Time Updates: Automatically adjusts book quantities and member debt after transactions.
 
-## Screenshots
-
 ## Technologies Used
 - Python
 - Flask
