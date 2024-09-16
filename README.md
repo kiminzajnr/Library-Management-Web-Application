@@ -19,13 +19,28 @@ Allow a librarian to track books and their quantity, books issued to members, bo
 - Flask-SQLAlchemy
 
 ## Screenshots
+#### Book List  
 ![book_list](/screenshots/books_list.png)
+
+#### Member List  
 ![member_list](/screenshots/members_list.png)
+
+#### Add Book  
 ![add_book](/screenshots/add_book.png)
+
+#### Add Member  
 ![add_member](/screenshots/add_member.png)
+
+#### Issued books  
 ![issued_books](/screenshots/issued_books.png)
+
+#### Issue a Book
 ![issue_book](/screenshots/Issue_book.png)
+
+#### Ensure Debt does not exceed 500 KSh
 ![debt_exceeded](/screenshots/debts_exceeded.png)
+
+#### Search Book by Author or title
 ![search_book](/screenshots/search_book.png)
 
 ## Contact
